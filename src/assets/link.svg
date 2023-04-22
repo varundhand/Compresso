@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
+   class='absolute left-0 my-2 ml-3 w-5 bg-red-50'
    fill="none"
    shapeRendering="geometricPrecision"
    stroke="currentColor"
