@@ -3,6 +3,10 @@ import { useEffect, useState } from 'react'
 import {ReactComponent as LinkSVG} from '../assets/link.svg'
 import { copy, linkIcon, loader, tick } from "../assets";
 
+import LoadingSpinner from './shared/LoadingSpinner';
+import ErrorMessage from './shared/ErrorMessage';
+import ArticleSummary from './shared/ArticleSummary';
+
 import { useLazyGetSummaryQuery } from '../services/article'
 
 const Demo = () => {
@@ -89,6 +93,11 @@ const Demo = () => {
               </div>
             ))}  
           </div>
+        </div>
+
+        {/* RENDERING RESULTS */}
+        <div className='my-10 max-w-full flex justify-center items-center'>
+          {isFetching ? <LoadingSpinner/> : error ? <ErrorMessage error={error?.data?.error}/> : (article.summary && <ArticleSummary summary={article.summary}/>)}
         </div>
       </section>
     </div>
