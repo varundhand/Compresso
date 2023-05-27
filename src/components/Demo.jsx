@@ -1,7 +1,7 @@
 // import { useState, useEffect } from "react"
 import { useEffect, useState } from 'react'
 import {ReactComponent as LinkSVG} from '../assets/link.svg'
-import { copy, linkIcon, loader, tick } from "../assets";
+import { copy, tick } from "../assets";
 
 import LoadingSpinner from './shared/LoadingSpinner';
 import ErrorMessage from './shared/ErrorMessage';
@@ -16,6 +16,7 @@ const Demo = () => {
   summary: ''
   })
   const [allArticles, setAllArticles] = useState([])
+  const [copied,setCopied] = useState('')
   
   const [getSummary, {error, isFetching}] = useLazyGetSummaryQuery();
 
@@ -29,8 +30,8 @@ const Demo = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const {data} = await getSummary({articleUrl: article.url});
-
+    const {data} = await getSummary({articleUrl: article.url}); // 'data' is an object with summary property. example ---> {summary: 'The `configureStore` function is a friendly abstra…cribe` as middleware and enhancers, respectively.'}
+    //! console.log(data)
     if (data?.summary){ // if data object exists with summary property
       const newArticle = {...article, summary: data.summary};
       const updatedAllArticles = [newArticle,...allArticles ]
@@ -41,7 +42,18 @@ const Demo = () => {
       localStorage.setItem('articles',JSON.stringify(updatedAllArticles)) // setting all articles in local storage
     }
   }
+  /**
+   * The handleCopy function sets the copyUrl value to the 'copied' state and writes it to the clipboard using navigator.clipboard.writeText`
+   * @param {*} copyUrl - the url which is clicked
+   * @returns {setCopied(copyUrl)}- copyUrl is the 'copied' state
+   */
+  const handleCopy = (copyUrl) => {
+    setCopied(copyUrl);
+    navigator.clipboard.writeText(copyUrl);
+    setTimeout(() => setCopied(false), 3000)
+  }
 
+  //! console.log(allArticles)
   return (
     <div>
       <section className="mt-16 w-full max-w-xl">
@@ -80,9 +92,9 @@ const Demo = () => {
                 onClick={() => setArticle(item)}
                 className="link_card"
               >
-                <div className="copy_btn">
+                <div className="copy_btn" onClick={() => handleCopy(item.url)}>
                   <img 
-                    src={copy} 
+                    src={copied === item.url ? tick : copy} // conditional rendering
                     alt='copy_icon' 
                     className='w-[40%] h-[40%] object-contain'
                   />
