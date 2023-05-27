@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import {ReactComponent as LinkSVG} from '../assets/link.svg'
 
+
 const Demo = () => {
   // const [{url,summary},setArticle] = useState({  //destructered them on the spot
     const [article,setArticle] = useState({
