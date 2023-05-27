@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import {ReactComponent as LinkSVG} from '../assets/link.svg'
 
+import { useLazyGetSummaryQuery } from '../services/article'
 
 const Demo = () => {
   // const [{url,summary},setArticle] = useState({  //destructered them on the spot
@@ -10,8 +11,19 @@ const Demo = () => {
     summary: ''
   })
   
-  const handleSubmit = async () => {
-    alert('submitted')
+  const [getSummary, {error, isFetching}] = useLazyGetSummaryQuery()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const {data} = await getSummary({articleUrl: article.url});
+
+    if (data?.summary){ // if data object exists with summary property
+      const newArticle = {...article, summary: data.summary};
+      
+      setArticle(newArticle)
+      console.log(newArticle)
+    }
   }
 
   return (
