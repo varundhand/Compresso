@@ -1,7 +1,7 @@
 // import { useState, useEffect } from "react"
 import { useEffect, useState } from 'react'
 import {ReactComponent as LinkSVG} from '../assets/link.svg'
-import { copy, tick } from "../assets";
+import { copy, tick, trash } from "../assets";
 
 import LoadingSpinner from './shared/LoadingSpinner';
 import ErrorMessage from './shared/ErrorMessage';
@@ -22,6 +22,7 @@ const Demo = () => {
 
   useEffect(() => {
     const articlesFromLocalStorage = JSON.parse(localStorage.getItem('articles')); // retrieving all articles from local storage
+    // console.log(articlesFromLocalStorage)
     if (articlesFromLocalStorage){
       setAllArticles(articlesFromLocalStorage)
     }
@@ -53,7 +54,21 @@ const Demo = () => {
     setTimeout(() => setCopied(false), 3000)
   }
 
-  //! console.log(allArticles)
+  const handleDelete = (deleteUrl) => {
+    const yeet = localStorage.getItem('articles')
+    console.log(yeet)
+    const articlesFromLocalStorage = JSON.parse(yeet)
+    console.log(articlesFromLocalStorage )
+    // const storedArray = JSON.parse(articlesFromLocalStorage)
+    // console.log(storedArray)
+    const finalArray = articlesFromLocalStorage.filter(item => item.url !== deleteUrl)
+    console.log(finalArray)
+    const updatedArrayString = JSON.stringify(finalArray)
+    localStorage.setItem('articles', updatedArrayString)
+    setAllArticles(finalArray)
+  }
+
+   console.log(allArticles)
   return (
     <div>
       <section className="mt-16 w-full max-w-xl">
@@ -86,22 +101,29 @@ const Demo = () => {
 
           {/* URL HISTORY  */}
           <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
-            {allArticles.map((item,index) => (
+            
+            {allArticles?.map((item,index) => (
               <div
                 key={`link-${index}`}
                 onClick={() => setArticle(item)}
                 className="link_card"
               >
-                <div className="copy_btn" onClick={() => handleCopy(item.url)}>
-                  <img 
-                    src={copied === item.url ? tick : copy} // conditional rendering
-                    alt='copy_icon' 
-                    className='w-[40%] h-[40%] object-contain'
-                  />
-                </div>
+              <div className="copy_btn" onClick={() => handleCopy(item.url)}>
+                <img 
+                  src={copied === item.url ? tick : copy} // conditional rendering
+                  alt='copy_icon' 
+                  className='w-[40%] h-[40%] object-contain'
+                />
+              </div>
               <p className='flex-1 font-satoshi font-medium text-sm truncate text-emerald-500'>
-                {item.url}
+                {(item.url)}
               </p>
+              <div className="trash_btn" onClick={() => handleDelete(item.url)}>
+                <img 
+                  src={trash} 
+                  alt="trash_icon" 
+                  />
+              </div>
               </div>
             ))}  
           </div>

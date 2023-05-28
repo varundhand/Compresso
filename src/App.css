@@ -17,7 +17,7 @@
 }
 
 .main:before {
-  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+  background: radial-gradient(circle, rgba(255, 255, 0, 0.1) 0, rgba(255, 255, 0, 0.05) 100%);
   position: absolute;
   content: "";
   z-index: 2;
@@ -107,6 +107,34 @@
   @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
 }
 
+.trash_btn {
+  width: 25px;
+  transition: transform 0.3s, filter 0.3s;
+}
+/* .trash_btn:hover {
+  transform: scale(1.2); 
+} */
+/* .trash_btn:hover svg path {
+  fill: #FF0000; 
+  filter: drop-shadow(0 0 5px #FF0000); 
+} */
+.trash_btn:hover {
+  transform: scale(1.1); /* Enlarge the icon by 10% */
+  animation: glow 1s infinite alternate; /* Add the glow animation */
+}
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #FF0000; /* Initial glow effect */
+  }
+  100% {
+    box-shadow: 0 0 20px 5px #FF0000; /* Intensified glow effect */
+  }
+}
+.trash_btn:hover svg path {
+  fill: #FF0000; /* Change to red color on hover */
+}
+
+
 .blue_gradient {
   @apply font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
 }
@@ -117,4 +145,8 @@
 
 .summary_box {
   @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-4;
+}
+
+.actual_orange_gradient {
+  @apply font-black bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent;
 }
