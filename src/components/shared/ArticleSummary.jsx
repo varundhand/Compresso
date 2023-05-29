@@ -1,7 +1,8 @@
 import React from 'react'
 
 const ArticleSummary = ({summary}) => {
-  summary.split('/n').map(p => console.log(p))
+  // summary.split('/n').map(p => console.log(p))
+  // console.log(summary)
   // const formattedSummary = summary.replace(/\n\n/g, '<br>');
   // console.log(formattedSummary)
   return (

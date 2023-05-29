@@ -118,16 +118,22 @@
   fill: #FF0000; 
   filter: drop-shadow(0 0 5px #FF0000); 
 } */
+.trash_btn{
+  background-color: transparent;
+}
 .trash_btn:hover {
   transform: scale(1.1); /* Enlarge the icon by 10% */
-  animation: glow 1s infinite alternate; /* Add the glow animation */
+  animation: glow .75s infinite alternate; /* Add the glow animation */
+  outline: none;
 }
 @keyframes glow {
   0% {
-    box-shadow: 0 0 5px #FF0000; /* Initial glow effect */
+    /* box-shadow: 0 0 5px #FF0000;  Initial glow effect  */
+    filter: drop-shadow(0 0 10px red);
   }
   100% {
-    box-shadow: 0 0 20px 5px #FF0000; /* Intensified glow effect */
+    /* box-shadow: 0 0 20px 5px #FF0000;  Intensified glow effect  */
+    filter: drop-shadow( 5px 5px 30px 10px red);
   }
 }
 .trash_btn:hover svg path {

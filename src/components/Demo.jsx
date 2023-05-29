@@ -56,19 +56,19 @@ const Demo = () => {
 
   const handleDelete = (deleteUrl) => {
     const yeet = localStorage.getItem('articles')
-    console.log(yeet)
+    // console.log(yeet)
     const articlesFromLocalStorage = JSON.parse(yeet)
-    console.log(articlesFromLocalStorage )
+    // console.log(articlesFromLocalStorage )
     // const storedArray = JSON.parse(articlesFromLocalStorage)
     // console.log(storedArray)
     const finalArray = articlesFromLocalStorage.filter(item => item.url !== deleteUrl)
-    console.log(finalArray)
+    // console.log(finalArray)
     const updatedArrayString = JSON.stringify(finalArray)
     localStorage.setItem('articles', updatedArrayString)
     setAllArticles(finalArray)
   }
 
-   console.log(allArticles)
+  //  console.log(allArticles)
   return (
     <div>
       <section className="mt-16 w-full max-w-xl">
