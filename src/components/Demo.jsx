@@ -29,7 +29,7 @@ const Demo = () => {
   }, [])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // to prevent the default behaviour of the form on submission 
 
     const {data} = await getSummary({articleUrl: article.url}); // 'data' is an object with summary property. example ---> {summary: 'The `configureStore` function is a friendly abstra…cribe` as middleware and enhancers, respectively.'}
     //! console.log(data)
