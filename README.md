@@ -12,6 +12,7 @@ Compresso is an open-source article summarizer that aims to simplify reading by 
 
 - **Effortless Summaries**: Get clear and concise summaries of lengthy articles.
 - **Streamlined Reading**: Transform lengthy articles into easily digestible content.
+- **Local Storage**: Save and access your search history for convenient reference.
 - **Time-Saving**: Stay informed and grasp the main points effortlessly.
 - **User-Friendly Interface**: Compresso prioritizes a seamless and intuitive reading experience.
 - **Open Source**: Compresso is free and open-source, ensuring transparency and community collaboration.
