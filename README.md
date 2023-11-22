@@ -1,6 +1,6 @@
 <h1 align="center">Compresso: The Article Summarizer</h1>
 <p align="center">
-  <img width="250" alt="Screenshot 2023-11-22 at 10 57 10 PM" src="https://github.com/varundhand/Compresso/assets/110025628/c8934f97-cfe0-4ce5-afd2-4294cd9d84da">
+  <img width="250" alt="Compresso Logo" src="https://github.com/varundhand/Compresso/assets/110025628/71924967-47af-4daa-aa85-fa1ca16140ef">
 </p>
 
 
